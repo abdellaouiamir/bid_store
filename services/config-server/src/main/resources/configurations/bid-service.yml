@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bid
+    username: Amir
+    password: Amir
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: BidWinner:com.ms.ecommerce.kafka.BidWinner
+server:
+  port: 8070
+application:
+  config:
+    client-url: http://localhost:8222/api/v1/client
+    product-url: http://localhost:8222/api/v1/product
+    payment-url: http://localhost:8222/api/v1/payment

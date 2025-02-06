@@ -1,0 +1,36 @@
+spring:
+  data:
+    mongodb:
+      username: amir
+      password: amir
+      host: localhost
+      port: 27017
+      database: notification-service
+      authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: paymentGroup, winnerGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: BidWinner:com.ms.ecommerce.kafka.bid.BidWinner,PaymentNotification:com.ms.ecommerce.kafka.payment.PaymentNotification
+  mail:
+    host: localhost
+    port: 1025
+    username: amir
+    password: amir
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+server:
+  port: 8040
