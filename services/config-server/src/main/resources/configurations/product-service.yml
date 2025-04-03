@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/product
+    url: jdbc:postgresql://postgres-service:5432/product
     username: Amir
     password: Amir
     driver-class-name: org.postgresql.Driver
@@ -20,4 +20,4 @@ server:
   port: 8050
 application:
   config:
-    bid-url: http://localhost:8222/api/v1/bid
+    bid-url: http://bid-service:8070/api/v1/bid

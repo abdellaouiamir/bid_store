@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+  labels:
+    app: product-deployment
+spec:
+  selector:
+    app: product-deployment
+  ports:
+    - port: 80          # External port
+      targetPort: 8050  # Container port
+      protocol: TCP
+  type: ClusterIP    # Use NodePort or ClusterIP if you don't need external access
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployment
+  labels:
+    app: product-deployment
+spec:
+  replicas: 1          # Number of pod replicas
+  selector:
+    matchLabels:
+      app: product-deployment
+  template:
+    metadata:
+      labels:
+        app: product-deployment
+    spec:
+      containers:
+        - name: product-deployment
+          image: product_image:latest    # Replace with your Docker image name
+          imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
+          ports:
+            - containerPort: 8050
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "0.2"
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"

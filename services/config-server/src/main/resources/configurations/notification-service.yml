@@ -3,13 +3,13 @@ spring:
     mongodb:
       username: amir
       password: amir
-      host: localhost
+      host: mongo-service
       port: 27017
       database: notification-service
       authentication-database: admin
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka-service:9092
       group-id: paymentGroup, winnerGroup
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -18,7 +18,7 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.type.mapping: BidWinner:com.ms.ecommerce.kafka.bid.BidWinner,PaymentNotification:com.ms.ecommerce.kafka.payment.PaymentNotification
   mail:
-    host: localhost
+    host: mail-service
     port: 1025
     username: amir
     password: amir
