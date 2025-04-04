@@ -8,8 +8,7 @@ spec:
   selector:
     app: payment-deployment
   ports:
-    - port: 80          # External port
-      targetPort: 8060  # Container port
+    - port: 8060          # External port
       protocol: TCP
   type: ClusterIP    # Use NodePort or ClusterIP if you don't need external access
 ---
@@ -31,8 +30,7 @@ spec:
     spec:
       containers:
         - name: payment-deployment
-          image: payment_image:latest    # Replace with your Docker image name
-          imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
+          image: abdellaouiamir/payment:latest    # Replace with your Docker image name
           ports:
             - containerPort: 8060
           resources:

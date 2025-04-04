@@ -10,7 +10,7 @@ spec:
   ports:
     - port: 8888          # External port
       protocol: TCP
-  type: ClusterIP    # Use NodePort or ClusterIP if you don't need external access
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -30,8 +30,7 @@ spec:
     spec:
       containers:
         - name: config-server-deployment
-          image: config_server_image:latest    # Replace with your Docker image name
-          imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
+          image: abdellaouiamir/config_server:latest
           ports:
             - containerPort: 8888
           resources:

@@ -8,8 +8,7 @@ spec:
   selector:
     app: bid-deployment
   ports:
-    - port: 80          # External port
-      targetPort: 8070  # Container port
+    - port: 8070  # Container port
       protocol: TCP
   type: ClusterIP    # Use NodePort or ClusterIP if you don't need external access
 ---
@@ -31,7 +30,7 @@ spec:
     spec:
       containers:
         - name: bid-deployment
-          image: bid_image:latest    # Replace with your Docker image name
+          image: abdellaouiamir/bid:latest    # Replace with your Docker image name
           imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
           ports:
             - containerPort: 8070

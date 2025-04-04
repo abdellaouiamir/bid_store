@@ -8,8 +8,7 @@ spec:
   selector:
     app: client-deployment
   ports:
-    - port: 80          # External port
-      targetPort: 8090  # Container port
+    - port: 8090  # Container port
       protocol: TCP
   type: ClusterIP    # Use NodePort or ClusterIP if you don't need external access
 ---
@@ -31,8 +30,7 @@ spec:
     spec:
       containers:
         - name: client-deployment
-          image: client_image:latest    # Replace with your Docker image name
-          imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
+          image: abdellaouiamir/client:latest
           ports:
             - containerPort: 8090
           resources:
