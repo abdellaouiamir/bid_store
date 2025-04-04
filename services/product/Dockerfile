@@ -1,9 +1,5 @@
 FROM openjdk:21-jdk-slim
-LABEL authors="amir"
 WORKDIR /app
-COPY pom.xml ./
-COPY src ./src
-RUN ./mvnw dependency:go-offline
-RUN ./mvnw package -DskipTests
+COPY target/product-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8050
-CMD ["java", "-jar", "target/product.jar"]
+CMD ["java", "-jar", "app.jar"]
