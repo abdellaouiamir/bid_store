@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: product-deployment
-          image: abdellaouiamir/product:latest    # Replace with your Docker image name
+          image: abdellaouiamir/product:1.0.0    # Replace with your Docker image name
           ports:
             - containerPort: 8050
           resources:

@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: payment-deployment
-          image: abdellaouiamir/payment:latest    # Replace with your Docker image name
+          image: abdellaouiamir/payment:1.0.1    # Replace with your Docker image name
           ports:
             - containerPort: 8060
           resources:

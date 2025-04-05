@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: client-deployment
-          image: abdellaouiamir/client:latest
+          image: abdellaouiamir/client:1.0.0
           ports:
             - containerPort: 8090
           resources:

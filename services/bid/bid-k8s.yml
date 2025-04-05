@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: bid-deployment
-          image: abdellaouiamir/bid:latest    # Replace with your Docker image name
+          image: abdellaouiamir/bid:1.0.1    # Replace with your Docker image name
           imagePullPolicy: IfNotPresent  # Use Always if pulling from remote registry
           ports:
             - containerPort: 8070

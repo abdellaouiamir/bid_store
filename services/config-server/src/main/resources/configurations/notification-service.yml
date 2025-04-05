@@ -9,7 +9,7 @@ spring:
       authentication-database: admin
   kafka:
     consumer:
-      bootstrap-servers: kafka-service:9092
+      bootstrap-servers: kafka:9092
       group-id: paymentGroup, winnerGroup
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

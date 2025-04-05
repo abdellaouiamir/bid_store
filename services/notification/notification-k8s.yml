@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: notification-deployment
-          image: abdellaouiamir/notification:latest    # Replace with your Docker image name
+          image: abdellaouiamir/notification:1.0.1    # Replace with your Docker image name
           resources:
             requests:
               memory: "256Mi"

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: config-server-service
+  name: config-service
   labels:
-    app: config-server-deployment
+    app: config-deployment
 spec:
   selector:
-    app: config-server-deployment
+    app: config-deployment
   ports:
     - port: 8888          # External port
       protocol: TCP
@@ -15,22 +15,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: config-server-deployment
+  name: config-deployment
   labels:
-    app: config-server-deployment
+    app: config-deployment
 spec:
   replicas: 1          # Number of pod replicas
   selector:
     matchLabels:
-      app: config-server-deployment
+      app: config-deployment
   template:
     metadata:
       labels:
-        app: config-server-deployment
+        app: config-deployment
     spec:
       containers:
-        - name: config-server-deployment
-          image: abdellaouiamir/config_server:latest
+        - name: config-deployment
+          image: abdellaouiamir/config_server:1.0.1
           ports:
             - containerPort: 8888
           resources:
