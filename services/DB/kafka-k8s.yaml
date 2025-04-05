@@ -1,4 +1,5 @@
 # zookeeper-kafka.yaml
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,7 @@ spec:
     spec:
       containers:
         - name: zookeeper
-          image: confluentinc/cp-zookeeper
+          image: confluentinc/cp-zookeeper:latest
           env:
             - name: ZOOKEEPER_SERVER_ID
               value: "1"
@@ -36,6 +37,7 @@ spec:
       targetPort: 2181
   selector:
     app: zookeeper
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -53,7 +55,7 @@ spec:
     spec:
       containers:
         - name: kafka
-          image: confluentinc/cp-kafka
+          image: confluentinc/cp-kafka:latest
           env:
             - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
               value: "1"
@@ -64,9 +66,11 @@ spec:
             - name: KAFKA_ZOOKEEPER_CONNECT
               value: "zookeeper:2181"
             - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
-              value: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
+              value: "PLAINTEXT:PLAINTEXT"
             - name: KAFKA_ADVERTISED_LISTENERS
               value: "PLAINTEXT://kafka:9092"
+            - name: KAFKA_LISTENERS
+              value: "PLAINTEXT://0.0.0.0:9092"
           ports:
             - containerPort: 9092
 ---
@@ -80,4 +84,4 @@ spec:
       targetPort: 9092
   selector:
     app: kafka
-  clusterIP: None
+  type: ClusterIP
