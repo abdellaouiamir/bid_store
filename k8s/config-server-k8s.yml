@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: config-deployment
-          image: abdellaouiamir/config_server:1.0.0
+          image: abdellaouiamir/config-server:1.0.2
           ports:
             - containerPort: 8888
           resources:

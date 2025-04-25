@@ -8,8 +8,8 @@ spring:
       database: notification-service
       authentication-database: admin
   kafka:
+    bootstrap-servers: kafka:9092
     consumer:
-      bootstrap-servers: kafka:9092
       group-id: paymentGroup, winnerGroup
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
